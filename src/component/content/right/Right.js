@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Item from "./item/Item";
-import Products_data from "../../../data";
+import Products_data from "../../../data/data";
 
 
 

@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+const affterClick = (name) => {
+            alert("Order Succesfull " + name)           
+  }
 
 class Item extends Component {
     render() {
@@ -15,8 +18,12 @@ class Item extends Component {
                 <div className="infomation">
                   <div className="infomation-detail">{this.props.chitiet}</div>
                   <div className="please">please Call</div>
-                  <div className="submit"><input type="submit" name="ADD" defaultValue="ADD" /></div>
                 </div>
+               
+               
+               
+               
+                    <div className="sub"><button type="button" onClick={() => affterClick(this.props.tenSP)} defaultValue="ADD" >add</button>  </div>
               </div>
 
         
