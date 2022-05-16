@@ -30,8 +30,8 @@ export default class Score extends Component {
         alert("Bạn là học sinh" + this.state.xl);
     };
     setResult = () => {
-        if (this.state.avg > 4.5) this.setState({ result: "Được lên lớp" });
-        else this.setState({ result: "Ở lại lớp" });
+         (this.state.avg > 4.5) ? this.setState({ result: "Được lên lớp" })
+        : this.setState({ result: "Ở lại lớp" });
     };
     setXL = () => {
         if (this.state.avg < 4.5) this.setState({ xl: "yếu" });
@@ -42,9 +42,9 @@ export default class Score extends Component {
     };
     render() {
         return (
-            <>
-            <Concula/>
-            </>
+            <div>
+            <Cocula />   
+            </div>
         );
     }
 }

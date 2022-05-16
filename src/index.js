@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import ReactCore from './formreactjs/cacuDBT';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Score from './formreactjs/caculatorscroe/concacu';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Score  />
+    <ReactCore/>
   </React.StrictMode>
 );
 
