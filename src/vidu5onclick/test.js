@@ -14,7 +14,7 @@ import React, { useEffect, useReducer } from "react";
             });
         }
         useEffect(() => {
-            console.info(Math.random())
+            // console.info(Math.random())
             getData()
         },[])
          
@@ -31,7 +31,7 @@ import React, { useEffect, useReducer } from "react";
             <button onClick={() => {changeTypeProduct("dongho");}}>Đồng hồ</button>
             <button onClick={() => {changeTypeProduct("vongtay");}}>Vòng tay</button>
             <button onClick={() => {changeTypeProduct("bongtai");}}>Bông tai</button>
-            <div class="row">
+            <div id="products">
             {
             type == ""
                 ? listProduct.map((product) => (
