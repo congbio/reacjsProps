@@ -11,7 +11,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch('https://61bc10bed8542f0017824524.mockapi.io/name')
+        fetch('https://61bc131bd8542f0017824588.mockapi.io/a/arrayproducts')
             .then(res=> res.json())
             .then(json => {
                 this.setState({
@@ -32,15 +32,13 @@ class App extends Component {
         return (
             <div>
                 <h2>Ảnh áo</h2>
-                <div className="wrapper">
+                <div className="wrapper row">
                     {/* eslint-disable-next-line array-callback-return */}
                     {items.map(item => {
                         return(
-                            <div className="macbook__cart" key={item.id}>
-                                <img src={item.image} alt=""/>
-                                <p>{item.title}</p>
-                                
-                               
+                            <div className="macbook__cart col-md-3 col-sx-4" key={item.id}>
+                                <img src={item.avatar} alt=""/>
+                                <p>{item.title}</p>      
                             </div>
                         )
                     })}

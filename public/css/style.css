@@ -80,13 +80,33 @@ a {
     margin: 10px 0px;
 }
 
+.macbook__cart>img {
+    width: 250px;
+}
+img, svg {
+    vertical-align: middle;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+img {
+    width: 100%;
+    margin: 0 auto;
+}
+
 .img-product img {
-    height: 200px;
-    width: 200px;
+    width: 100%;
     padding: 10px 10px 0 8px;
     object-fit: cover;
     box-sizing: border-box;
 }
+
 
 .text,
 .img-product,

@@ -1,0 +1,42 @@
+td.tui {
+    font-size: 30px;
+    color: #104927;
+    font-weight: bold;
+    text-align: center;
+}
+td {
+    color: black;
+    font-size: 27px;
+    text-align: center;
+    padding-top: 28px;
+} 
+.form1 {
+    /* width: 1000px
+    height: 800px; */
+    margin: auto;
+    background-color: rgb(96 170 138);
+    text-align: center;
+    padding: 100px 164px;
+    
+}
+.container{
+    display: flex;
+    justify-content: center;
+}
+#td {
+        color: rgb(8 9 9);
+            font-size: 63px;
+}
+
+#vl {
+    color: rgb(250, 242, 242);
+    background-color: chocolate;
+}
+input[type="submit"] {
+    width: 171%;
+}
+
+tr {
+    font-size: 20px;
+    color: rgb(50, 165, 204);
+}
