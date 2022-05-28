@@ -10,7 +10,8 @@ class List extends Component {
 			id: "",
 			content: "",
 			title: "",
-			image: "",
+			type: "",
+			img: "",
 		};
 		this.onDelete = this.onDelete.bind(this);
 		this.onChange = this.onChange.bind(this);
@@ -60,20 +61,23 @@ class List extends Component {
 		this.setState({
 			[event.target.name]: event.target.value,
 		});
+
+
 	};
 	onChangeImage = (event) => {
 		this.setState({
 			[event.target.name]: "images/" + event.target.files[0].name,
 		});
-		console.log(event.target.files[0].name);
+	console.log("images/" + event.target.files[0].name);
 	};
 	showEditProduct = (id) => {
 		var product = this.getProduct(id);
 		this.setState({
 			id: product.id,
 			content: product.content,
+			type: product.type,
 			title: product.title,
-			image: product.image,
+			img: product.img,
 		});
 		document.getElementById("image-edit").style.display = "block";
 		alert(id);
@@ -89,18 +93,24 @@ class List extends Component {
 	onSave = (event) => {
 		event.preventDefault();
 		if (this.state.id === "") {
-			if (
-				this.state.content !== "" &&
-				this.state.title !== "" &&
-				this.state.image !== ""
+      // console.log(this.state.content);
+      // console.log(this.state.type);
+      // console.log(this.state.title);
+      // console.log(this.state.img);
+      // console.log(")(--------------------------------");
+			if (this.state.content !== "" &&	this.state.title !== "" &&	this.state.img !== ""
 			) {
+
+       
 				axios({
+          
 					method: "POST",
 					url: `https://6290540a27f4ba1c65b73fb1.mockapi.io/ArrayNew`,
 					data: {
 						content: this.state.content,
+						type: this.state.type,
 						title: this.state.title,
-						image: this.state.avatar,
+						img: this.state.img,
 					},
 				}).then((res) => {
 					this.componentDidMount();
@@ -115,8 +125,9 @@ class List extends Component {
 				url: `https://6290540a27f4ba1c65b73fb1.mockapi.io/ArrayNew/${this.state.id}`,
 				data: {
 					content: this.state.content,
+					type: this.state.type,
 					title: this.state.title,
-					image: this.state.avatar,
+					img: this.state.img,
 				},
 			}).then((res) => {
 				this.componentDidMount();
@@ -126,8 +137,9 @@ class List extends Component {
 		this.setState({
 			id: "",
 			content: "",
+			type: "",
 			title: "",
-			image: "",
+			img: "",
 		});
 	};
 	onDelete = (id) => {
@@ -154,22 +166,58 @@ class List extends Component {
 		return (
 			<div className="container">
 				<div className="row">
-					<div className="col-4">
-						<form onSubmit={this.onSave}>
-							<div className="form-group">
-								<label htmlFor="exampleInputEmail1">Name</label>
-								<input
-									type="text"
-									name="name"
-									value={this.state.content}
-									onChange={this.onChange}
-									className="form-control"
-									id="exampleInputEmail1"
-									aria-describedby="emailHelp"
-									placeholder="Enter name"
-								/>
-							</div>
+					<h1 style={{ color: "black", textAlign: "center" }}>Admin</h1>
 
+					<div className="row">
+						<div>
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">image</th>
+										<th scope="col">Title</th>
+										<th scope="col">Conten</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{this.state.products.map((product, index) => (
+										<tr>
+											<th scope="row">{index + 1}</th>
+											<td>
+												<img
+													src={product.img}
+													style={{ width: "50px", height: "50px" }}
+												/>
+											</td>
+											<td>
+												<h6>{product.title}</h6>
+											</td>
+											<td>{product.content}</td>
+											<td className="">
+												<div className="d-flex">
+													<button
+														className="m-3 btn btn-primary "
+														onClick={() => this.showEditProduct(product.id)}
+													>
+														Edit
+													</button>
+													<button
+														className="m-3 btn btn-danger"
+														onClick={() => this.onDelete(product.id)}
+													>
+														Delete
+													</button>
+												</div>
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div className="row">
+						<form onSubmit={this.onSave}>
 							<div className="form-group">
 								<label htmlFor="exampleInputEmail2">title</label>
 								<input
@@ -184,10 +232,36 @@ class List extends Component {
 								/>
 							</div>
 							<div className="form-group">
+								<label htmlFor="exampleInputEmail2">Conten</label>
+								<textarea
+									type="text"
+									name="content"
+									onChange={this.onChange}
+									value={this.state.content}
+									className="form-control"
+									id="exampleInputEmail2"
+									aria-describedby="emailHelp"
+									placeholder="Enter content"
+								/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="name_category">Category</label>
+								<select
+									className="form-control"
+									id="name_category"
+									name="type"
+									onChange={this.onChange}
+									// defaultValue={this.props.products.type}
+								>
+									<option value="trong nuoc">Trong nuoc</option>
+									<option value="ngoai nuoc">Ngoai nuoc</option>
+								</select>
+							</div>
+							<div className="form-group">
 								<label>Image</label>
 								<input
 									type="file"
-									name="image"
+									name="img"
 									onChange={this.onChangeImage}
 									className="form-control"
 									placeholder="image"
@@ -200,50 +274,15 @@ class List extends Component {
 							>
 								<label>Image</label>
 								<img
-									src={"./" + this.state.image}
+									src={"./" + this.state.img}
 									alt="img"
-									style={{ width: "100px" }}
+									style={{ width: "200px" }}
 								/>
 							</div>
-							<button type="submit" className="btn btn-primary">
+							<button type="submit" className="mt-5 mb-5 btn btn-primary">
 								Submit
 							</button>
 						</form>
-					</div>
-					<div className="col-8">
-						<div className="row">
-							{this.state.products.map((product) => (
-                console.log(product.image),
-								<div className="card col-4" style={{ width: "18rem" }}>
-									<img
-										className="card-img-top"
-										src={"./" + product.image}
-                    
-										alt="Card cap"
-									/>
-									<div className="card-body">
-										<h5 className="card-title">{product.title}</h5>
-										<div className="row">
-											<div className="col-6">{product.content}</div>
-											<div className="col-6">{}</div>
-										</div>
-
-										<button
-											className="btn btn-primary"
-											onClick={() => this.showEditProduct(product.id)}
-										>
-											Edit
-										</button>
-										<button
-											className="btn btn-danger"
-											onClick={() => this.onDelete(product.id)}
-										>
-											delete
-										</button>
-									</div>
-								</div>
-							))}
-						</div>
 					</div>
 				</div>
 			</div>
