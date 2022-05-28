@@ -50,62 +50,64 @@ class Score1 extends Component {
     }
     render() {
         return (
-            <form name="form" onSubmit={this.mySubmitHandler} >
-                <table width={670} height={177} border={0} align="center" bgcolor="ffcccc">
-                    <tbody>
-                        <tr bgcolor>
-                            <td colSpan={2} align="center" bgcolor="#ff0099">
-                                <font color size={5}>
-                                    <b> KET QUA HOC TAP</b>
-                                </font>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width={125}><span>Diem HK1: </span></td>
-                            <td width={261}> 
-                                <label>
-                                    <input name="hk1" type="number" min="0" max="10" size={20} onChange={this.myChangeHandler}/>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width={125}><span>Diem HK2: </span></td>
-                            <td width={261}> 
-                                <label>
-                                    <input name="hk2" type="number" min="0" max="10" onChange={this.myChangeHandler}/>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span>Diem TB: </span></td>
-                            <td width={261}> 
-                                <label>
-                                    <input name="MediumScore" type="text" readOnly value={this.state.MediumScore} onChange={this.myChangeHandler}/>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span>Ket qua: </span></td>
-                            <td> 
-                                <label>
-                                    <input name="ketqua" type="text" value={this.state.KQ} />
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span>Xep loai hoc luc: </span></td>
-                            <td> 
-                                <label>
-                                    <input name="x" type="text" value={this.state.academicPower} />
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2} align="center"><button type="submit">Gui</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
+            <div className="container">
+                <form name="form" onSubmit={this.mySubmitHandler} >
+                    <table width={670} height={177} border={0} align="center" bgcolor="ffcccc">
+                        <tbody>
+                            <tr bgcolor>
+                                <td colSpan={2} align="center" bgcolor="#ff0099">
+                                    <font color size={5}>
+                                        <b> KET QUA HOC TAP</b>
+                                    </font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width={125}><span>Diem HK1: </span></td>
+                                <td width={261}> 
+                                    <label>
+                                        <input name="hk1" type="number" min="0" max="10" size={20} onChange={this.myChangeHandler}/>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width={125}><span>Diem HK2: </span></td>
+                                <td width={261}> 
+                                    <label>
+                                        <input name="hk2" type="number" min="0" max="10" onChange={this.myChangeHandler}/>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Diem TB: </span></td>
+                                <td width={261}> 
+                                    <label>
+                                        <input name="MediumScore" type="text" readOnly value={this.state.MediumScore} onChange={this.myChangeHandler}/>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Ket qua: </span></td>
+                                <td> 
+                                    <label>
+                                        <input name="ketqua" type="text" value={this.state.KQ} />
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Xep loai hoc luc: </span></td>
+                                <td> 
+                                    <label>
+                                        <input name="x" type="text" value={this.state.academicPower} />
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan={2} align="center"><button type="submit">Gui</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         );
     }
 }

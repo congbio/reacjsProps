@@ -1,38 +1,18 @@
 import React from "react";
+import './component/Style.css'
+import getdata from "../data/datacrud";
 class App extends React.Component {
+  
   constructor(props) {
     super(props);
+    console.log(getdata());
+    var array = getdata();
     this.state = {
       index: 0,
       name: "",
       price: 0,
       action: "ADD ITEM", //default ADD ITEM
-      items: [
-        {
-          name: "cảnh đẹp",
-          price: 500.0,
-          img:
-            "https://i.pinimg.com/736x/56/86/03/568603cbd1860c67bf8f6776cbe7f885.jpg"
-        },
-        {
-          name: "Cảnh dẹpd",
-          price: 1400.0,
-          img:
-            "https://i.pinimg.com/736x/56/86/03/568603cbd1860c67bf8f6776cbe7f885.jpg"
-        },
-        {
-          name: "Cảnh dẹpd",
-          price: 1600.0,
-          img:
-            "https://i.pinimg.com/736x/56/86/03/568603cbd1860c67bf8f6776cbe7f885.jpg"
-        },
-        {
-          name: "Cảnh dẹp",
-          price: 1700.0,
-          img:
-            "https://i.pinimg.com/736x/56/86/03/568603cbd1860c67bf8f6776cbe7f885.jpg"
-        }
-      ]
+      items: array
     };
     this.changeName = this.changeName.bind(this);
     this.changePrice = this.changePrice.bind(this);
@@ -49,7 +29,7 @@ class App extends React.Component {
   };
   changeImg = (e) => {
     this.setState({
-      img: e.target.value
+      img: "images/"+e.target.files[0].name
     });
   };
 
@@ -101,7 +81,7 @@ class App extends React.Component {
 
   deleteItem = (name) =>
     this.setState({
-      items: this.state.items.filter((item) => item.name != name)
+      items: this.state.items.filter((item) => item.name !== name)
     });
   render() {
     return (
@@ -130,11 +110,12 @@ class App extends React.Component {
               />
               <label>Image</label>
               <input
-                type="text"
+
+                type="file"
                 name=""
                 className="form-control"
                 onChange={this.changeImg}
-                value={this.state.img}
+                
               />
             </div>
             <div className="form-group">
@@ -172,23 +153,23 @@ class App extends React.Component {
                     <td>{item.name}</td>
                     <td>{item.price} $</td>
                     <td>
-                      <img width="100px" src={item.img} alt="" />
+                      <img width="100px" src={'./'+item.img} alt="" />
                     </td>
                     <td>
-                      <label
-                        className="badge badge-warning"
+                      <button
+                        className="btn btn-success"
                         onClick={() => this.Edit(item, index)}
                       >
                         modify
-                      </label>
+                      </button>
                     </td>
                     <td>
-                      <label
-                        className="badge badge-danger"
+                      <button 
+                        className="btn btn-danger "
                         onClick={() => this.deleteItem(item.name)}
                       >
                         remove
-                      </label>
+                      </button>
                     </td>
                   </tr>
                 ))}

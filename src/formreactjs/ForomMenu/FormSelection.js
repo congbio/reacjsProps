@@ -62,17 +62,13 @@ class App extends React.Component {
                   <td colSpan={2} id="td">Menu</td>
                 </tr>
                 <tr>
-                  <td className="tui">Cà phê sữa...........................12.000đ</td>
+                  {options.map((els) => (
+                      <tr >
+                        <td>{els.nameFruist} __________________________________________ {els.price}$</td>
+                        </tr>
+                      ))}
                 </tr>
-                <tr>
-                  <td className="tui">Cà phê đá.............................10.000đ</td>
-                </tr>
-                <tr>
-                  <td className="tui">Sting dâu.............................8.000đ</td>
-                </tr>
-                <tr>
-                  <td className="tui">Trà đá.............................2.000đ</td>
-                </tr>
+                
               </tbody>
             </table>
             <table width={700} className="tbl">
