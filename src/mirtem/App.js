@@ -10,7 +10,7 @@ class List extends Component {
 			id: "",
 			content: "",
 			title: "",
-			type: "",
+			type: "trong nuoc",
 			img: "",
 		};
 		this.onDelete = this.onDelete.bind(this);
@@ -24,7 +24,7 @@ class List extends Component {
 			var id = match.params.id;
 			axios({
 				method: "GET",
-				url: `https://6290540a27f4ba1c65b73fb1.mockapi.io/ArrayNew/${id}`,
+				url: `https://629378507aa3e6af1a0be0a9.mockapi.io/ArrayNew/${id}`,
 				data: null,
 			})
 				.then((res) => {
@@ -39,7 +39,7 @@ class List extends Component {
 				.catch((err) => {});
 		}
 		axios
-			.get("https://6290540a27f4ba1c65b73fb1.mockapi.io/ArrayNew")
+			.get("https://629378507aa3e6af1a0be0a9.mockapi.io/ArrayNew")
 			.then((res) => {
 				this.setState({ products: res.data });
 			});
@@ -93,11 +93,6 @@ class List extends Component {
 	onSave = (event) => {
 		event.preventDefault();
 		if (this.state.id === "") {
-      // console.log(this.state.content);
-      // console.log(this.state.type);
-      // console.log(this.state.title);
-      // console.log(this.state.img);
-      // console.log(")(--------------------------------");
 			if (this.state.content !== "" &&	this.state.title !== "" &&	this.state.img !== ""
 			) {
 
@@ -105,7 +100,7 @@ class List extends Component {
 				axios({
           
 					method: "POST",
-					url: `https://6290540a27f4ba1c65b73fb1.mockapi.io/ArrayNew`,
+					url: `https://629378507aa3e6af1a0be0a9.mockapi.io/ArrayNew`,
 					data: {
 						content: this.state.content,
 						type: this.state.type,
@@ -122,7 +117,7 @@ class List extends Component {
 		} else {
 			axios({
 				method: "PUT",
-				url: `https://6290540a27f4ba1c65b73fb1.mockapi.io/ArrayNew/${this.state.id}`,
+				url: `https://629378507aa3e6af1a0be0a9.mockapi.io/ArrayNew/${this.state.id}`,
 				data: {
 					content: this.state.content,
 					type: this.state.type,
@@ -135,9 +130,9 @@ class List extends Component {
 			});
 		}
 		this.setState({
-			id: "",
+			id:"",
 			content: "",
-			type: "",
+			type: "trong nuoc",
 			title: "",
 			img: "",
 		});
@@ -146,7 +141,7 @@ class List extends Component {
 		console.log(id);
 		axios({
 			method: "DELETE",
-			url: `https://6290540a27f4ba1c65b73fb1.mockapi.io/ArrayNew/${id}`,
+			url: `https://629378507aa3e6af1a0be0a9.mockapi.io/ArrayNew/${id}`,
 			data: null,
 		}).then((res) => {
 			if (res.status === 200) {
@@ -160,9 +155,12 @@ class List extends Component {
 				});
 				alert(id + "Xóa sản phẩm thành công");
 			}
+
 		});
 	};
+	
 	render() {
+		// console.log(this.state);
 		return (
 			<div className="container">
 				<div className="row">
@@ -170,7 +168,7 @@ class List extends Component {
 
 					<div className="row">
 						<div>
-							<table class="table table-hover">
+							<table className="table table-hover">
 								<thead>
 									<tr>
 										<th scope="col">#</th>
@@ -182,11 +180,12 @@ class List extends Component {
 								</thead>
 								<tbody>
 									{this.state.products.map((product, index) => (
-										<tr>
+										<tr key={index}>
 											<th scope="row">{index + 1}</th>
 											<td>
 												<img
 													src={product.img}
+													alt=""
 													style={{ width: "50px", height: "50px" }}
 												/>
 											</td>

@@ -1,6 +1,6 @@
 const ItermLeft = ({ image, nameItem }) => {
 	return (
-		<div className="row ">
+		<div className="row mt-5">
 			<div className="col-lg-5 col-md-5">
 				<img src={image} className="card-img-top" alt="img" />
 			</div>
