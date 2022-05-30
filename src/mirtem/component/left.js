@@ -59,7 +59,7 @@ const Left = () => {
         <h2> Trong nuoc</h2>
 
           <div className="col col-lg-6 col-sm-6 col-md-6"> <Last/> </div>
-          <div className="col col-lg-6 col-sm-6 col-md-6">
+          <div className="col col-lg-6 col-sm-6 col-md-6 mt-5 " style={{ height: "400px",overflow: "scroll"}}>
             {listProduct
               .filter((product) => product.type === "trong nuoc")
               .map((product) => {
@@ -80,7 +80,7 @@ const Left = () => {
           <div className="col col-lg-6 col-sm-6 col-md-6">
             <Last2/>
           </div>
-          <div className="col col-lg-6 col-sm-6 col-md-6">
+          <div className="col col-lg-6 col-sm-6 col-md-6 mt-5"   style={{ height: "400px",overflow: "scroll"}}>
             {listProduct
               .filter((product) => product.type === "ngoai nuoc")
               .map((product) => {

@@ -168,20 +168,20 @@ class List extends Component {
 
 					<div className="row">
 						<div>
-							<table className="table table-hover">
+							<table className="table table-hover" id="table1">
 								<thead>
 									<tr>
-										<th scope="col">#</th>
-										<th scope="col">image</th>
-										<th scope="col">Title</th>
-										<th scope="col">Conten</th>
-										<th scope="col">Action</th>
+										<th >STT</th>
+										<th >image</th>
+										<th >Title</th>
+										<th >Conten</th>
+										<th >Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									{this.state.products.map((product, index) => (
 										<tr key={index}>
-											<th scope="row">{index + 1}</th>
+											<td >{index + 1}</td>
 											<td>
 												<img
 													src={product.img}
@@ -190,7 +190,7 @@ class List extends Component {
 												/>
 											</td>
 											<td>
-												<h6>{product.title}</h6>
+												{product.title}
 											</td>
 											<td>{product.content}</td>
 											<td className="">
@@ -279,7 +279,7 @@ class List extends Component {
 								/>
 							</div>
 							<button type="submit" className="mt-5 mb-5 btn btn-primary">
-								Submit
+								ADD NEW
 							</button>
 						</form>
 					</div>
